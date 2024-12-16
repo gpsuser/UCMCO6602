@@ -2,7 +2,9 @@
 
 ## Introduction
 
-Today's lecture is on the Diffie-Hellman Key Exchange protocol. This fundamental cryptographic concept revolutionized secure communication and laid the groundwork for many modern cryptographic systems. Over the next two hours, we'll explore its history, mechanics, implementation, and security implications.
+Today's lecture is on the Diffie-Hellman Key Exchange protocol. This fundamental cryptographic concept revolutionized secure communication and laid the groundwork for many modern cryptographic systems. 
+
+* We'll explore its history, mechanics, implementation, and security implications.
 
 ## Historical Context
 
@@ -315,4 +317,4 @@ Diffie-Hellman is widely used in:
 - Consider post-quantum alternatives
 
 ---
-*End of Lecture*
+
