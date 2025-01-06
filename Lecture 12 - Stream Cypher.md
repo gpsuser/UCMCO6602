@@ -1,12 +1,12 @@
-Here is the lecture content on Stream Ciphers in markdown format:
-
-# Lecture 12: Stream Ciphers
+# Lecture 12 - Stream Ciphers
 
 ## Introduction
 
-In today's lecture, we consider the world of stream ciphers - a crucial topic in cryptography. Stream ciphers are a class of symmetric key ciphers that encrypt and decrypt data one bit or byte at a time. 
+Below, we consider the world of stream ciphers - a crucial topic in cryptography. Stream ciphers are a class of symmetric key ciphers that encrypt and decrypt data one bit or byte at a time. 
 
-They are known for their speed, simplicity, and suitability for real-time applications. Throughout this lecture, we will explore the fundamentals of stream ciphers, their design principles, and some notable examples. By the end, you should have a solid grasp of how stream ciphers work and their role in modern cryptography.
+They are known for their speed, simplicity, and suitability for real-time applications. Throughout this lecture, we will explore the fundamentals of stream ciphers, their design principles, and some notable examples. 
+
+By the end, you should have a solid grasp of how stream ciphers work and their role in modern cryptography.
 
 ## Learning Objectives
 
