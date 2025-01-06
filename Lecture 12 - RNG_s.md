@@ -427,6 +427,14 @@ if __name__ == "__main__":
     main()
 ```
 
+Output:
+
+```
+Original data: Sensor readings: Temperature: 25.3°C, Humidity: 60%
+Encrypted data (hex): f7523762fe1e889bc0522d79ff2bdbd3866b1c7ee149da88d34e1b77ab2c9adc8e14dba5d2c088a1d44e6070f8b8d1d38219093295a8aced
+Nonce: 0xe4089768
+```
+
 ## The Importance of the Nonce
 
 The nonce plays a crucial role in ensuring the security of the CTR mode. Here's why:
