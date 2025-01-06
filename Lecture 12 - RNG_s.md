@@ -1,4 +1,4 @@
-# Lecture 12 - Pseudo-Random Number Generation and Stream Ciphers
+# Lecture 12 - Pseudo-Random Number Generation
 
 ## Introduction
 
