@@ -48,19 +48,19 @@ Even if someone intercepts the encrypted message, they can't decrypt it without 
 
 ---
 
-- **Asymmetric Keys**: In asymmetric encryption, keys come in related pairs consisting of a public key and private key. 
+**Asymmetric Keys: In asymmetric encryption, keys come in related pairs consisting of a public key and private key. 
 
-    * The public key, as the name suggests, can be freely shared with anyone. The private key must be kept secret by its owner.
+* The public key, as the name suggests, can be freely shared with anyone. The private key must be kept secret by its owner.
 
-- **Public Key Certificate**: A public key certificate is a digitally signed statement that binds a public key to the identity of its owner. 
+**Public Key Certificate**: A public key certificate is a digitally signed statement that binds a public key to the identity of its owner. 
 
-    * It is issued by a trusted certificate authority (CA). This allows others to verify that a given public key genuinely belongs to a specific individual or organization.
+* It is issued by a trusted certificate authority (CA). This allows others to verify that a given public key genuinely belongs to a specific individual or organization.
 
-- **Public Key Cryptographic Algorithms**: Asymmetric encryption relies on mathematical algorithms that have the property of being easy to compute in one direction but very difficult to reverse without knowing some secret. 
+**Public Key Cryptographic Algorithms**: Asymmetric encryption relies on mathematical algorithms that have the property of being easy to compute in one direction but very difficult to reverse without knowing some secret. 
 
-    * Common algorithms include RSA, Elliptic Curve Cryptography, and Diffie-Hellman.
+* Common algorithms include RSA, Elliptic Curve Cryptography, and Diffie-Hellman.
 
-- **Public Key Infrastructure (PKI)**: PKI is the combination of technologies, policies, and procedures needed to create, manage, distribute, use, store, and revoke digital certificates and public keys. It provides the framework for establishing trust in public keys.
+**Public Key Infrastructure (PKI)**: PKI is the combination of technologies, policies, and procedures needed to create, manage, distribute, use, store, and revoke digital certificates and public keys. It provides the framework for establishing trust in public keys.
 
 ### Goal of Asymmetric Encryption
 
