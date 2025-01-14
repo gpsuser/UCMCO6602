@@ -142,7 +142,7 @@ For a public key cryptosystem to be secure and practical, it must meet certain c
 4. It must be computationally easy for the receiver, knowing the private key and the ciphertext, to decrypt and recover the original message.
 5. The two keys must be such that the private key cannot be deduced from knowledge of the public key.
 
-### Key Exchange
+## Key Exchange
 
 One of the most important applications of asymmetric encryption is in solving the key distribution problem, i.e., how to securely exchange keys over an insecure network.
 
@@ -169,7 +169,7 @@ Most real-world cryptosystems, like those used in HTTPS, use hybrid encryption. 
 5. The client and server now share a symmetric key. All communication is encrypted and decrypted using this key and a symmetric cipher like AES. 
 6. To ensure integrity, messages include a hash (like SHA-256) of the contents encrypted with the symmetric key.
 
-### Hashing
+## Hashing
 
 Hashing is another fundamental concept in cryptography. 
 
@@ -210,7 +210,7 @@ Suppose Alice wants to send a message to Bob and have Bob be sure the message wa
 3. Bob receives the message and computes the hash of the received message using the same hash function.
 4. Bob compares the computed hash to the hash Alice sent. If they match, Bob can be confident the message wasn't altered.
 
-### Digital Signatures
+## Digital Signatures
 
 Digital signatures provide authentication and integrity by allowing the sender to "sign" a message or document with their private key. The signature can then be verified by anyone who has access to the sender's public key.
 
@@ -237,7 +237,7 @@ Suppose Bob wants to digitally sign a contract and send it to Alice.
 5. Alice decrypts the signature using Bob's public key and gets the original hash.
 6. Alice compares the hash she computed to the hash from the signature. If they match, she knows the contract came from Bob and hasn't been altered.
 
-### Digital Certificates
+## Digital Certificates
 
 A digital certificate is an electronic document used to prove ownership of a public key. The certificate includes information about the key, its owner's identity, and the digital signature of an entity that has verified the certificate's contents. If the signature is valid, and the person examining the certificate trusts the signer, then they know they can use that key to communicate with its owner.
 
