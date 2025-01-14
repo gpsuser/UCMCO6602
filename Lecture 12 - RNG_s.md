@@ -210,7 +210,7 @@ The key components of this implementation are:
    - Simulates a sensor node with encryption capabilities
    - Implements CTR mode encryption using the PRNG
    - Handles data padding and block operations
-   - Maintains a counter and nonce for unique keystream generation
+   - Maintains a counter and nonce (number used once) for unique keystream generation
 
 The implementation follows these security principles:
 
@@ -227,7 +227,7 @@ The implementation follows these security principles:
    - Suitable for resource-constrained environments
 
 3. Security Features:
-   - Unique nonce for each encryption session
+   - Unique nonce (number used once) for each encryption session
    - Counter ensures unique keystream blocks
    - Feistel network provides confusion and diffusion
    - Modular design allows easy algorithm updates
@@ -241,12 +241,12 @@ To use this implementation in a real WSN:
    - The PRNG implementation
 
 2. For each sensor reading:
-   - Generate a new nonce
+   - Generate a new nonce (number used once)
    - Encrypt the data using CTR mode
-   - Transmit the encrypted data along with the nonce
+   - Transmit the encrypted data along with the nonce (number used once)
 
 3. The receiving station would:
-   - Receive the encrypted data and nonce
+   - Receive the encrypted data and nonce (number used once)
    - Use the same key and algorithms to decrypt
    - Verify the data integrity
 
@@ -435,7 +435,7 @@ Encrypted data (hex): f7523762fe1e889bc0522d79ff2bdbd3866b1c7ee149da88d34e1b77ab
 Nonce: 0xe4089768
 ```
 
-## The Importance of the Nonce
+## The Importance of the Nonce (Number Used Once)
 
 The nonce plays a crucial role in ensuring the security of the CTR mode. Here's why:
 
