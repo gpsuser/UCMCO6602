@@ -90,7 +90,7 @@ The security of asymmetric encryption relies on a few key principles:
 - **Public Key**: The public key can be freely distributed and is used for encrypting messages destined for the owner of the corresponding private key, or for verifying digital signatures made by the private key.
 - **Relationship Between Keys**: Public and private keys are mathematically related such that data encrypted by the public key can only be decrypted by the corresponding private key. However, it is computationally infeasible to determine the private key given only the public key.
 
-* Example: Asymmetric Encryption*
+#### Example: Asymmetric Encryption*
 
 Let's consider a simple messaging scenario between Alice and Bob:
 
@@ -201,7 +201,7 @@ These properties make hash functions incredibly useful in cryptography and cyber
 `Blockchain`: In blockchain systems like Bitcoin, transactions are hashed and added to the block. The block header contains a hash of the previous block's header, chaining the blocks together. This, combined with the distributed nature of blockchain, provides immutability and prevents tampering.
 
 
-*Example: Hashing*
+#### Example: Hashing
 
 Suppose Alice wants to send a message to Bob and have Bob be sure the message wasn't altered in transit.
 
@@ -226,9 +226,10 @@ Digital signatures provide authentication and integrity by allowing the sender t
 2. The recipient decrypts the signature using the sender's public key. This gives them the original hash.
 3. The recipient compares the hash they computed to the hash from the signature. If they match, the signature is valid.
 
-*Example: Digital Signature*
+#### Example: Digital Signature
 
 Suppose Bob wants to digitally sign a contract and send it to Alice.
+
 1. Bob creates a hash of the contract using a hash function like SHA-256.
 2. Bob encrypts the hash with his private key. This is his digital signature.
 3. Bob sends the contract and his signature to Alice.
@@ -237,9 +238,10 @@ Suppose Bob wants to digitally sign a contract and send it to Alice.
 6. Alice compares the hash she computed to the hash from the signature. If they match, she knows the contract came from Bob and hasn't been altered.
 
 ### Digital Certificates
+
 A digital certificate is an electronic document used to prove ownership of a public key. The certificate includes information about the key, its owner's identity, and the digital signature of an entity that has verified the certificate's contents. If the signature is valid, and the person examining the certificate trusts the signer, then they know they can use that key to communicate with its owner.
 
-*Example: Digital Certificate*
+#### Example: Digital Certificate
 
 When you visit a secure website (one that uses https), your browser obtains the site's digital certificate. The certificate contains the site's public key, information about the site's identity, and a signature from a trusted certificate authority (CA). Your browser checks that the certificate is valid and has been signed by a CA it trusts. If everything checks out, it uses the public key in the certificate to set up a secure connection with the site.
 
