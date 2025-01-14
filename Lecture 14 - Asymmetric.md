@@ -119,8 +119,8 @@ Providing authentication and integrity by signing with the private key. The sign
 
 `Cryptocurrencies`: Cryptocurrencies like Bitcoin and Ethereum use asymmetric encryption to prove ownership of funds and to sign transactions.
 
-Public key cryptography has three main uses:
 
+*Table 1: Asymmetric algorithms and their uses*
 
 | Algorithm | Enc/Dec | Digital Signature | Key Exchange |
 |-----------|---------|-------------------|--------------|
@@ -130,7 +130,7 @@ Public key cryptography has three main uses:
 | Diffie-Hellman | No | No | Yes |
 | ECC | Yes | Yes | Yes |
 
-*Table 1: Asymmetric algorithms and their uses*
+
 
 ### Conditions for Public Key Cryptosystems
 
