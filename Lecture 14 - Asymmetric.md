@@ -48,7 +48,7 @@ Even if someone intercepts the encrypted message, they can't decrypt it without 
 
 ---
 
-**Asymmetric Keys: In asymmetric encryption, keys come in related pairs consisting of a public key and private key. 
+**Asymmetric Keys**: In asymmetric encryption, keys come in related pairs consisting of a public key and private key. 
 
 * The public key, as the name suggests, can be freely shared with anyone. The private key must be kept secret by its owner.
 
