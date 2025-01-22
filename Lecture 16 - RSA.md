@@ -287,6 +287,133 @@ else:
 
 This code demonstrates the complete flow of secure messaging using RSA. In practice, you would also need to consider things like user interfaces, key management, and network protocols. But this gives you a good idea of the cryptographic core of such a system.
 
+
+### Illustrative RSA implementation in python - simplified
+
+```python
+import math
+from typing import Tuple
+
+def is_prime(n: int) -> bool:
+    """Check if a number is prime."""
+    if n < 2:
+        return False
+    for i in range(2, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+def generate_prime_pair(min_value: int, max_value: int) -> Tuple[int, int]:
+    """Generate two distinct prime numbers within a range."""
+    primes = [num for num in range(min_value, max_value) if is_prime(num)]
+    if len(primes) < 2:
+        raise ValueError("Range too small to find two distinct primes")
+    p = primes[0]
+    q = primes[1]
+    return p, q
+
+def calculate_phi(p: int, q: int) -> int:
+    """Calculate Euler's totient function φ(n)."""
+    return (p - 1) * (q - 1)
+
+def gcd(a: int, b: int) -> int:
+    """Calculate Greatest Common Divisor using Euclidean algorithm."""
+    while b:
+        a, b = b, a % b
+    return a
+
+def generate_public_key(min_value: int = 100, max_value: int = 1000) -> Tuple[int, int]:
+    """
+    Generate public key components (n, e).
+    Returns tuple of (n, e) where:
+    n is the modulus
+    e is the public exponent
+    """
+    # Generate prime numbers
+    p, q = generate_prime_pair(min_value, max_value)
+    
+    # Calculate modulus
+    n = p * q
+    
+    # Calculate φ(n)
+    phi = calculate_phi(p, q)
+    
+    # Choose public exponent e
+    # We'll use 65537 if it's suitable, otherwise find another one
+    e = 65537
+    if e >= phi:
+        # Find a smaller e that is coprime with phi
+        e = 3
+        while e < phi:
+            if gcd(e, phi) == 1:
+                break
+            e += 2
+    
+    return n, e
+
+def encrypt_message(message: int, public_key: Tuple[int, int]) -> int:
+    """
+    Encrypt a message using RSA public key.
+    
+    Args:
+        message: Integer representation of message (must be < n)
+        public_key: Tuple of (n, e)
+    
+    Returns:
+        Encrypted message (ciphertext)
+    """
+    n, e = public_key
+    if message >= n:
+        raise ValueError("Message too large for given key")
+    
+    # Perform RSA encryption: c = m^e mod n
+    ciphertext = pow(message, e, n)
+    return ciphertext
+
+# Example usage
+def main():
+    # Generate public key
+    public_key = generate_public_key(100, 1000)
+    n, e = public_key
+    print(f"Generated public key:")
+    print(f"Modulus (n): {n}")
+    print(f"Public exponent (e): {e}")
+    
+    # Encrypt a message
+    message = 42  # Simple message for demonstration
+    print(f"\nOriginal message: {message}")
+    
+    encrypted_message = encrypt_message(message, public_key)
+    print(f"Encrypted message: {encrypted_message}")
+
+if __name__ == "__main__":
+    main()
+```
+
+
+
+### Key Assumptions and Limitations:
+
+* We're using relatively small prime numbers for demonstration (in practice, you'd use much larger primes)
+The message must be converted to an integer smaller than n
+
+* We're implementing textbook RSA without padding (in practice, you'd use proper padding schemes like PKCS#1)
+This is for educational purposes - in real applications, you should use established cryptographic libraries
+
+### Important Security Notes:
+
+This is a basic implementation for learning purposes
+Real-world RSA implementations need:
+
+* Secure prime number generation
+* Proper padding schemes
+* Much larger key sizes (typically 2048 or 4096 bits)
+* Protection against timing attacks
+* Protection against other cryptographic attacks
+
+
+For production use, you should use established cryptographic libraries like pycryptodome or Python's built-in cryptography library rather than implementing RSA yourself.
+
 ## Conclusion
 
 In this lecture, we've explored the RSA cryptosystem in depth. We've seen how it uses one-way functions and the integer factorization problem to enable secure public-key encryption. We've also looked at the practical aspects of implementing RSA, including key generation, encryption, decryption, and optimizations.
