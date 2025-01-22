@@ -285,7 +285,47 @@ else:
     print("Signature verification failed.")
 ```
 
-This code demonstrates the complete flow of secure messaging using RSA. In practice, you would also need to consider things like user interfaces, key management, and network protocols. But this gives you a good idea of the cryptographic core of such a system.
+Next is a full python implementaion of RSA encryption - using a simplified example.
+
+The code demonstrates the complete flow of secure messaging using RSA. In practice, you would also need to consider things like user interfaces, key management, and network protocols. But this gives you a good idea of the cryptographic core of such a system.
+
+
+#### Recap: First Principles of RSA
+
+Key Generation:
+
+Select two large prime numbers (let's call them p and q)
+Calculate n = p × q
+Calculate φ(n) = (p-1) × (q-1)
+Choose public exponent e that is:
+
+Coprime with φ(n)
+Usually chosen as 65537 (a prime number)
+
+
+Calculate private exponent d where:
+
+d × e ≡ 1 (mod φ(n))
+Found using extended Euclidean algorithm
+
+
+
+
+Public Key:
+
+Consists of (n, e)
+n is the modulus
+e is the encryption exponent
+
+
+Encryption Process:
+
+Convert message M to number m (where m < n)
+Calculate ciphertext: c = m^e mod n
+
+
+
+Now - let's implement this in Python, focusing on the encryption part.
 
 
 ### Illustrative RSA implementation in python - simplified
@@ -390,6 +430,16 @@ if __name__ == "__main__":
     main()
 ```
 
+#### Output:
+
+```
+Generated public key:
+Modulus (n): 10403
+Public exponent (e): 7
+
+Original message: 42
+Encrypted message: 295
+```
 
 
 ### Key Assumptions and Limitations:
