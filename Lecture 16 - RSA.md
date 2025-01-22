@@ -202,7 +202,7 @@ While RSA is inherently slower than symmetric ciphers, there are techniques to s
 
 These optimizations, combined with appropriate key sizes, make RSA practical for many applications.
 
-## Case Study: Secure Messaging with RSA
+## Secure Messaging with RSA
 
 Let's consider a simple secure messaging system that uses RSA for encryption. Here's how it would work:
 
@@ -220,7 +220,7 @@ Let's consider a simple secure messaging system that uses RSA for encryption. He
      - He verifies the signature using Alice's public key
      - He decrypts the message with his private key
 
-Here's some Python code that demonstrates this process:
+Here's some Python code that demonstrates this end to end encryption/decryption  process - using python libraries:
 
 ```python
 from Crypto.PublicKey import RSA
@@ -285,7 +285,72 @@ else:
     print("Signature verification failed.")
 ```
 
-Next is a full python implementaion of RSA encryption - using a simplified example.
+output:
+
+```
+from Crypto.PublicKey import RSA
+from Crypto.Cipher import PKCS1_OAEP
+from Crypto.Signature import pkcs1_15
+from Crypto.Hash import SHA256
+
+def generate_keys():
+    key = RSA.generate(2048)
+    private_key = key.export_key()
+    public_key = key.publickey().export_key()
+    return private_key, public_key
+
+def encrypt(message, pub_key):
+    rsa_key = RSA.importKey(pub_key)
+    rsa_key = PKCS1_OAEP.new(rsa_key)
+    encrypted = rsa_key.encrypt(message)
+    return encrypted
+
+def decrypt(ciphertext, priv_key):
+    rsa_key = RSA.importKey(priv_key)
+    rsa_key = PKCS1_OAEP.new(rsa_key)
+    decrypted = rsa_key.decrypt(ciphertext)
+    return decrypted
+
+def sign(message, priv_key):
+    rsa_key = RSA.importKey(priv_key)
+    signer = pkcs1_15.new(rsa_key)
+    digest = SHA256.new()
+    digest.update(message)
+    sign = signer.sign(digest)
+    return sign
+
+def verify(message, signature, pub_key):
+    rsa_key = RSA.importKey(pub_key)
+    signer = pkcs1_15.new(rsa_key)
+    digest = SHA256.new()
+    digest.update(message)
+    try:
+        signer.verify(digest, signature)
+        return True
+    except (ValueError, TypeError):
+        return False
+
+# Example usage
+alice_private, alice_public = generate_keys()
+bob_private, bob_public = generate_keys()
+
+message = b'Hello, Bob! This is a secure message from Alice.'
+encrypted_message = encrypt(message, bob_public)
+signature = sign(message, alice_private)
+
+print(f"Original Message: {message}")
+print(f"Encrypted Message: {encrypted_message}")
+
+decrypted_message = decrypt(encrypted_message, bob_private)
+print(f"Decrypted Message: {decrypted_message}")
+
+if verify(decrypted_message, signature, alice_public):
+    print("Signature verified!")
+else:
+    print("Signature verification failed.")
+```
+
+Next we consider a python implementation of encryption - without using pre-baked python libraries.
 
 The code demonstrates the complete flow of secure messaging using RSA. In practice, you would also need to consider things like user interfaces, key management, and network protocols. But this gives you a good idea of the cryptographic core of such a system.
 
