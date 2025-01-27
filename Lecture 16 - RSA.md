@@ -288,66 +288,10 @@ else:
 output:
 
 ```
-from Crypto.PublicKey import RSA
-from Crypto.Cipher import PKCS1_OAEP
-from Crypto.Signature import pkcs1_15
-from Crypto.Hash import SHA256
-
-def generate_keys():
-    key = RSA.generate(2048)
-    private_key = key.export_key()
-    public_key = key.publickey().export_key()
-    return private_key, public_key
-
-def encrypt(message, pub_key):
-    rsa_key = RSA.importKey(pub_key)
-    rsa_key = PKCS1_OAEP.new(rsa_key)
-    encrypted = rsa_key.encrypt(message)
-    return encrypted
-
-def decrypt(ciphertext, priv_key):
-    rsa_key = RSA.importKey(priv_key)
-    rsa_key = PKCS1_OAEP.new(rsa_key)
-    decrypted = rsa_key.decrypt(ciphertext)
-    return decrypted
-
-def sign(message, priv_key):
-    rsa_key = RSA.importKey(priv_key)
-    signer = pkcs1_15.new(rsa_key)
-    digest = SHA256.new()
-    digest.update(message)
-    sign = signer.sign(digest)
-    return sign
-
-def verify(message, signature, pub_key):
-    rsa_key = RSA.importKey(pub_key)
-    signer = pkcs1_15.new(rsa_key)
-    digest = SHA256.new()
-    digest.update(message)
-    try:
-        signer.verify(digest, signature)
-        return True
-    except (ValueError, TypeError):
-        return False
-
-# Example usage
-alice_private, alice_public = generate_keys()
-bob_private, bob_public = generate_keys()
-
-message = b'Hello, Bob! This is a secure message from Alice.'
-encrypted_message = encrypt(message, bob_public)
-signature = sign(message, alice_private)
-
-print(f"Original Message: {message}")
-print(f"Encrypted Message: {encrypted_message}")
-
-decrypted_message = decrypt(encrypted_message, bob_private)
-print(f"Decrypted Message: {decrypted_message}")
-
-if verify(decrypted_message, signature, alice_public):
-    print("Signature verified!")
-else:
-    print("Signature verification failed.")
+Original Message: b'Hello, Bob! This is a secure message from Alice.'
+Encrypted Message: b'\x03\xd1e\x1fL\x01\xfc\xdb\x0f\x86\xdb\xe0\xe3\xd6\x97+.\xfe\xf2 \xfb\xad6\xe4\xf7+\xd7\x8d\xfb#qBB\x9a~\x91\xb0U\xcd\x9c\xb8\x9c\xed\xeb\x10Kh\xb7\xdc\xdd7\xeeG|h\xe9\x84\x1cP\xb4\xe9\t\xbaVU#\xa3\x04u\xd5K\\:\xeb\x8c\x87C\xd1\x0f*w\xb2\x85\xb3k\xeb\xbb[:8\x0f%+\xbdEG\xee\x15\x1d\x12\xcc>\x90\x07\xca\xc6\x8aO\xb3\x10<M\n\x83\x8c\xcb\x98\xec\xd6\x1f_3\xa4$3\xfc\xd2\xd0\xca\xe0r\xe5\xc2\x92\xb6\xe2\xabZpG\xcb\x91\xe6\xc5y\r`b\xaa?6@O\x08\xb4\xda\xaf\x92w\xcf\x86\x94\xe0\xef\xbc\x16\xc5N\xebq\x9e\x92\xa7RD\x99\xaci\x88\xe4\xb3\xe4\xb5\xd5\xfb\x0fP\xa9\x07\xe7\xb5p\x93\xd6\x9b5\xa6\xa1\x82\xccVH4P\xda\xf4g\xe8\xb7^X\xd2\xd9\x1b#\xbfse\x01&\xa6\x9a\xec\xdc\xe2\x92\xee\xb9\xcd\xf8\xe9\x00k\xb6\r\x1fl^>\x87\xf4\xf9\xe6\xfd\xb9G\x87\xa8\xdf\xd2X\xa7\x10\xd0\xda#'
+Decrypted Message: b'Hello, Bob! This is a secure message from Alice.'
+Signature verified!
 ```
 
 Next we consider a python implementation of encryption - without using pre-baked python libraries.
