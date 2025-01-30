@@ -1,6 +1,7 @@
 # RSA Cryptography Exercises Solutions
 
 ## Exercise 1
+
 Given: p = 11 and q = 5 as set-up parameters for RSA.
 
 ### a) Given that e = 7, compute the corresponding private key d
@@ -32,12 +33,14 @@ Given: p = 11 and q = 5 as set-up parameters for RSA.
 Therefore, d = -17 ≡ 23 (mod 40)
 
 ### b) What other values can be used for e?
+
 * e must be coprime with φ(n) = 40
 * e must be between 1 and φ(n)
 * Factors of 40 are: 1, 2, 4, 5, 8, 10, 20, 40
 * Valid values for e: 3, 7, 11, 13, 17, 19, 21, 23, 27, 29, 31, 33, 37, 39
 
 ## Exercise 2
+
 Given: p = 41 and q = 17 as set-up parameters for RSA.
 
 1. Calculate n = p × q
@@ -49,12 +52,14 @@ Given: p = 41 and q = 17 as set-up parameters for RSA.
 ### c) Which of the parameters e₁ = 32, e₂ = 49 is a valid RSA exponent?
 
 For e₁ = 32:
+
 * 32 is less than 640 ✓
 * gcd(32, 640) = 32 ≠ 1 ✗
 * 32 = 2⁵, and 640 = 2⁷ × 5, share factors
 * Therefore e₁ = 32 is NOT valid
 
 For e₂ = 49:
+
 * 49 is less than 640 ✓
 * gcd(49, 640) = 1 ✓
 * 49 = 7², and 640 = 2⁷ × 5, no common factors
@@ -63,11 +68,13 @@ For e₂ = 49:
 ### d) Compute the corresponding private key d
 
 Using extended Euclidean algorithm:
+
 * 640 = 13 × 49 + 3
 * 49 = 16 × 3 + 1
 * 3 = 3 × 1 + 0
 
 Working backwards:
+
 * 1 = 49 - 16 × 3
 * 1 = 49 - 16 × (640 - 13 × 49)
 * 1 = 209 × 49 - 16 × 640
@@ -75,6 +82,7 @@ Working backwards:
 Therefore, d = 209
 
 ## Exercise 3
+
 Encrypt and decrypt using RSA algorithm with given parameters.
 
 ### a) p = 5, q = 11, e = 3, X = 9
@@ -116,6 +124,7 @@ Encrypt and decrypt using RSA algorithm with given parameters.
    * X = 5 (original message)
 
 ## Exercise 4
+
 Square-and-multiply steps for calculating x²⁹ with x = 2
 
 1. Convert 29 to binary: 
@@ -131,6 +140,7 @@ Square-and-multiply steps for calculating x²⁹ with x = 2
 Final result: 2²⁹ = 536,870,912
 
 ## Exercise 5
+
 Bob's RSA setup with p = 7 and q = 17.
 
 1. Calculate n:
@@ -144,6 +154,7 @@ Bob's RSA setup with p = 7 and q = 17.
    * e = 5
 
 Bob's key pair:
+
 * Public key: (n = 119, e = 5)
 * Private key: (n = 119, d = 77)
 
@@ -156,6 +167,7 @@ Bob's key pair:
    * X = 4 (original message)
 
 ## Exercise 6
+
 Problem: Bob encrypted his message to Alice with his private key.
 
 ### Issues with Bob's approach:
@@ -171,16 +183,19 @@ Problem: Bob encrypted his message to Alice with his private key.
    * Should use digital signatures instead
 
 ### Correct Approach Should Be:
+
 1. Encrypt with Alice's public key (for privacy)
 2. Sign with Bob's private key (for authentication)
 3. Send both encrypted message and signature
 
 ### Why Alice is Upset:
+
 * No message privacy
 * Inefficient authentication method
 * Misuse of public key cryptography principles
 
 ### Solution:
+
 Bob should:
 1. Encrypt message using Alice's public key
 2. Create digital signature using his private key
