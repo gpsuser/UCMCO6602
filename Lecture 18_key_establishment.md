@@ -282,6 +282,7 @@ Key establishment is a fundamental aspect of cryptographic systems that enables 
 Understanding these concepts is crucial for designing and implementing secure cryptographic systems. In our next lecture, we'll dive deeper into specific key establishment protocols and their security properties.
 
 ## References
+
 1. Katz, J., & Lindell, Y. (2020). Introduction to Modern Cryptography (3rd ed.). Chapman and Hall/CRC.
 2. Smart, N. P. (2016). Cryptography Made Simple. Springer International Publishing.
 3. Marlinspike, M., & Perrin, T. (2016). The Double Ratchet Algorithm. Signal Specifications.
@@ -289,4 +290,5 @@ Understanding these concepts is crucial for designing and implementing secure cr
 5. RFC 4306 - Internet Key Exchange (IKEv2) Protocol.
 6. Marlinspike, M., & Perrin, T. (2016). The X3DH Key Agreement Protocol.
 7. Perrin, T., & Marlinspike, M. (2016). The Double Ratchet Algorithm, Revision 1.
+
 ---
