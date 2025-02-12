@@ -47,6 +47,54 @@ This quadratic growth in key requirements presents significant challenges:
 - Key updates become time-consuming
 - Security risks increase with each additional key
 
+# 2.1 A note on E() notation
+
+You may have noticed the notation E(K, M) in the lecture slides and other references. This notation is commonly used in cryptography to represent encryption operations.
+
+In cryptographic notation, E(K, M) means "encrypt message M using key K". Let me break this down with a simple example:
+
+Let's say Alice wants to send the message "Hello" to Bob using a shared key "abc123". In standard notation, we would write this as:
+
+```
+E("abc123", "Hello")
+```
+
+When we write more complex protocols like in the lecture, we use additional notation:
+- || means concatenation (joining strings together)
+- [x || y] means x and y are concatenated before encryption
+
+Here's a practical example of sending a message with a timestamp:
+
+```
+Original message: "Hello"
+Timestamp: "2024-02-12"
+Key: "abc123"
+
+Written in notation:
+E("abc123", ["Hello" || "2024-02-12"])
+```
+
+This means we:
+1. First join "Hello" and "2024-02-12" together
+2. Then encrypt the combined string using the key "abc123"
+
+Let's look at one of the protocol examples from the lecture:
+```
+A → B: E(K_AB, [ID_A || K || T])
+```
+
+This means:
+1. Take three pieces of information:
+   - ID_A (Alice's identifier, maybe "ALICE")
+   - K (a new key, maybe "xyz789")
+   - T (a timestamp, maybe "2024-02-12")
+2. Concatenate them: ["ALICE" || "xyz789" || "2024-02-12"]
+3. Encrypt the whole thing using key K_AB (the shared key between A and B)
+
+This notation helps us understand complex cryptographic protocols more clearly.
+
+Next, we'll dive into key transport protocols and how they work.
+
 ## 3. Key Transport
 
 Key transport involves the secure transfer of a key from one party to another. This process must ensure:
