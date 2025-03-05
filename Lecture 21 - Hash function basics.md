@@ -165,7 +165,8 @@ print("Hash value:", hash_value)
 
 Again, this is a very basic hash function and is not suitable for cryptographic purposes. It's just a simple example to illustrate how hashing works. In real-world applications, more complex and secure hash functions like SHA-256 are used.
 
-Great question, Grant! To ensure that the hash value becomes exactly 256 bits, you can pad the output to meet the required bit length. This technique is commonly used in cryptographic hash functions.
+---
+To ensure that the hash value becomes exactly 256 bits, you can pad the output to meet the required bit length. This technique is commonly used in cryptographic hash functions.
 
 ### Padding a Simple Hash Function to 256 Bits:
 
